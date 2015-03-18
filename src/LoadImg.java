@@ -19,6 +19,14 @@ public class LoadImg extends JComponent {
         }
     }
 
+    public LoadImg(File f) {
+        try {
+            img = ImageIO.read(f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void paintComponent(Graphics g) {
         //super.paintComponent(g);                  // panel.repaint() work without this line
         g.drawImage(img, 0, 0, null);               // draw loaded image on the component

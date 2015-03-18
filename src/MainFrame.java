@@ -9,50 +9,66 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame  {
     private static LoadImg li;
+    private ImgView picture;
     public static boolean button1pressed = false;
-    private JPanel picturePanel;
-    private JButton button1;
+    //private JPanel picturePanel;
+    private JButton loadImageButton;
+    private JButton findButton;
 
     public MainFrame() {
         initComponents();
-        // where to add file chooser ???
     }
 
     public void initComponents() {
-        picturePanel = new JPanel();
-        button1 = new JButton("Click");
+        //picturePanel = new JPanel();
+        loadImageButton = new JButton("Load image");
+        findButton = new JButton("Find");
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
-
-        //===== picturePanel =====
+        contentPane.setPreferredSize(new Dimension(200, 200));
+        /*
+        //===== picture frame =====
         li = new LoadImg();
         picturePanel.add(li);
         contentPane.add(picturePanel);
         picturePanel.setBounds(new Rectangle(new Point(5, 0), li.getPreferredSize()));
-
         contentPane.setPreferredSize(li.getPreferredSizeForFrame());
+        */
         pack();
 
-        //===== button1 =====
-        button1.addActionListener(new ActionListener() {
+        //===== loadImageButton =====
+        loadImageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                button1Pressed(e);
+                loadImageButtonPressed(e);
             }
         });
-        contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(contentPane.getWidth()-60, 65), button1.getPreferredSize()));
+        contentPane.add(loadImageButton);
+        loadImageButton.setBounds(new Rectangle(new Point(contentPane.getWidth() - 100, 60), loadImageButton.getPreferredSize()));
 
-        //set needed size for this frame
+        //===== findButton =====
+        findButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                findButtonPressed(e);
+            }
+        });
+        contentPane.add(findButton);
+        findButton.setBounds(new Rectangle(new Point(contentPane.getWidth() - 100, 120), findButton.getPreferredSize()));
     }
 
-    private void button1Pressed(ActionEvent e) {
+    private void loadImageButtonPressed(ActionEvent e) {
+        // add file chooser HERE!!
+        picture = new ImgView(null);                        // here must be file instead of null
+    }
+
+    private void findButtonPressed(ActionEvent e) {
         System.out.println("click");
         button1pressed = true;
-        picturePanel.repaint();
+        picture.f.repaint();
     }
 
     public static void main(String[] args) {
