@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by DIMA on 14.03.2015.
- * in project LoadImage
+ * Project LoadImage
+ * MainFrame class is main class for GUI of project.
+ * @author Dima Halatenko
+ * @version 1.0  18/03/2015
  */
 public class MainFrame extends JFrame  {
     private static LoadImg li;
@@ -15,10 +17,16 @@ public class MainFrame extends JFrame  {
     private JButton loadImageButton;
     private JButton findButton;
 
+    /**
+     * Default constructor
+     */
     public MainFrame() {
         initComponents();
     }
 
+    /**
+     * initComponents method which control all UGI components.
+     */
     public void initComponents() {
         //picturePanel = new JPanel();
         loadImageButton = new JButton("Load image");
@@ -60,17 +68,29 @@ public class MainFrame extends JFrame  {
         findButton.setBounds(new Rectangle(new Point(contentPane.getWidth() - 100, 120), findButton.getPreferredSize()));
     }
 
+    /**
+     * Give respond on click loadImageButton.
+     * @param e event generated when loadImageButton pressed.
+     */
     private void loadImageButtonPressed(ActionEvent e) {
-        // add file chooser HERE!!
-        picture = new ImgView(null);                        // here must be file instead of null
+        //TODO add file chooser HERE!!
+        picture = new ImgView(null);       // here must be file instead of null
     }
 
+    /**
+     * Give respond on click findButton.
+     * @param e event generated when findButton pressed.
+     */
     private void findButtonPressed(ActionEvent e) {
         System.out.println("click");
         button1pressed = true;
         picture.f.repaint();
     }
 
+    /**
+     * The program executing starts here
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
